@@ -34,8 +34,15 @@ const patterns: [RegExp, string][] = [
   [/(ghp|gho|ghu|ghs|github_pat)_[A-Za-z0-9_]{20,}/g, "[REDACTED_GITHUB]"],
   [/sk-[A-Za-z0-9_-]{20,}/g, "[REDACTED_KEY]"],
   [/AIza[0-9A-Za-z_-]{30,}/g, "[REDACTED_GOOGLE]"],
+  [/ya29\.[A-Za-z0-9._-]{20,}/g, "[REDACTED_GOOGLE_OAUTH]"],
+  [/1\/\/[A-Za-z0-9._-]{20,}/g, "[REDACTED_GOOGLE_REFRESH]"],
+  [/ctx7sk-[A-Za-z0-9_-]{16,}/g, "[REDACTED_CTX7]"],
   [/npm_[A-Za-z0-9]{30,}/g, "[REDACTED_NPM]"],
   [/(Bearer\s+)[A-Za-z0-9._-]{24,}/g, "$1[REDACTED]"],
+  [
+    /[\u{1F300}-\u{1F9FF}\u{1FA00}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu,
+    "",
+  ],
 ];
 function redact(s: string): string {
   let out = s;

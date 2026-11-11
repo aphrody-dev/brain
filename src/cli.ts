@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bun
+#!/usr/bin/env bun
 // brain: merge AGY sessions into a redacted Obsidian vault, build the code graph (graphify), sync to Google Drive.
 // The Google OAuth consent for the agent account is done by a human (see `brain auth-drive`); nothing here handles passwords.
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
@@ -37,6 +37,9 @@ const PATTERNS = [
   /github_pat_[A-Za-z0-9_]{30,}/,
   /sk-[A-Za-z0-9_-]{30,}/,
   /AIza[0-9A-Za-z_-]{30,}/,
+  /ya29\.[A-Za-z0-9._-]{20,}/,
+  /1\/\/[A-Za-z0-9._-]{20,}/,
+  /ctx7sk-[A-Za-z0-9_-]{16,}/,
   /npm_[A-Za-z0-9]{30,}/,
   /-----BEGIN [A-Z ]*PRIVATE KEY-----/,
 ];
