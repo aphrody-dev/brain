@@ -57,7 +57,7 @@ export function leakScan(dir: string): string[] {
       if (statSync(p).size > 8_000_000) continue;
       const buf = readFileSync(p);
       if (buf.includes(0)) continue;
-      const t = buf.toString("utf8");
+      const t = buf.toString();
       if (
         secrets.some((s) => t.includes(s)) ||
         PATTERNS.some((re) => re.test(t))
